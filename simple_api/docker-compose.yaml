@@ -1,0 +1,62 @@
+version: "2.3"
+
+services:
+    fastapi:
+        container_name: fastapi
+        build: fastapi
+        # image: fastapi
+        hostname: fastapi
+        restart: always
+        oom_kill_disable: true
+        privileged: true
+        tty: true
+
+        expose:
+            - "8080"
+
+        volumes:
+            - ./fastapi:/py/
+        working_dir: /py
+        networks:
+            - back-tier
+
+    flask:
+        container_name: flask
+        build: flask
+        # image: flask
+        hostname: flask
+        restart: always
+        oom_kill_disable: true
+        privileged: true
+        tty: true
+
+        expose:
+            - "8080"
+
+        volumes:
+            - ./flask:/py/
+        working_dir: /py
+        networks:
+            - back-tier
+
+    client:
+        container_name: client
+        build: client
+        # image: client
+        hostname: client
+        restart: always
+        oom_kill_disable: true
+        privileged: true
+        tty: true
+        volumes:
+            - ./client:/py/
+        working_dir: /py
+        networks:
+            - back-tier
+
+networks:
+    back-tier:
+        driver: bridge
+
+
+
