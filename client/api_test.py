@@ -37,6 +37,9 @@ if __name__ == '__main__':
         except:
             raise("fail")
 
-    for i in range(100):
-        send("fastapi", 8080, img_enc)
-        send("flask", 8080, img_enc)
+    import time
+    while 1:
+        send("fastapi", 9000, img_enc)
+        time.sleep(1)
+        send("flask", 9000, img_enc)
+        time.sleep(1)

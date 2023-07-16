@@ -18,4 +18,4 @@ COPY . .
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
-ENTRYPOINT ["uvicorn","fastapi_server:app","--reload","--host","0.0.0.0","--port","8080"]
+ENTRYPOINT ["/bin/bash", "-c", "uvicorn fastapi_server:app --reload --host 0.0.0.0 --port ${API_PORT}"]

@@ -15,4 +15,4 @@ RUN pip3 install -r requirement_flask.txt
 
 COPY . .
 
-ENTRYPOINT ["gunicorn","--bind","0.0.0.0:8080","flask_server:app"]
+ENTRYPOINT ["/bin/bash", "-c", "gunicorn --bind 0.0.0.0:${API_PORT} flask_server:app"]

@@ -10,9 +10,10 @@ services:
         oom_kill_disable: true
         privileged: true
         tty: true
-
+        environment:
+            - API_PORT=9000
         expose:
-            - "8080"
+            - "9000"
 
         volumes:
             - ./fastapi:/py/
@@ -30,9 +31,10 @@ services:
         oom_kill_disable: true
         privileged: true
         tty: true
-
+        environment:
+            - API_PORT=9000
         expose:
-            - "8080"
+            - "9000"
 
         volumes:
             - ./flask:/py/
@@ -49,6 +51,9 @@ services:
         oom_kill_disable: true
         privileged: true
         tty: true
+        depends_on:
+            - fastapi
+            - flask
         volumes:
             - ./client:/py/
         working_dir: /py
