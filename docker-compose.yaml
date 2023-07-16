@@ -20,6 +20,7 @@ services:
         networks:
             - back-tier
 
+
     flask:
         container_name: flask
         build: flask
@@ -57,6 +58,3 @@ services:
 networks:
     back-tier:
         driver: bridge
-
-
-

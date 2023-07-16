@@ -10,9 +10,9 @@ RUN pip3 install requests \
                  PyTurboJPEG \
                  line_profiler
 
-COPY requirement_flask.txt requirement_flask.txt 
+COPY requirement_flask.txt requirement_flask.txt
 RUN pip3 install -r requirement_flask.txt
 
 COPY . .
 
-ENTRYPOINT ["gunicorn","--bind","0.0.0.0:8080","flask_server:app"] 
+ENTRYPOINT ["gunicorn","--bind","0.0.0.0:8080","flask_server:app"]
