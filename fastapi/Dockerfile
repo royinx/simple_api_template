@@ -10,9 +10,10 @@ RUN pip3 install requests \
                  PyTurboJPEG \
                  line_profiler
 
-COPY requirement_fastapi.txt requirement_fastapi.txt
-RUN pip3 install -r requirement_fastapi.txt
-
+# COPY requirement_fastapi.txt requirement_fastapi.txt
+# RUN pip3 install -r requirement_fastapi.txt
+RUN pip3 install fastapi \
+                 uvicorn
 COPY . .
 
 ENV LC_ALL=C.UTF-8

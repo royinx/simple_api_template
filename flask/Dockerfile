@@ -1,17 +1,20 @@
-FROM duruo850/ubuntu18.04-python3.6
+FROM python:3.8
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
     curl \
-    libturbojpeg
+    libturbojpeg0
 
 RUN pip3 install requests \
                  numpy \
                  PyTurboJPEG \
                  line_profiler
 
-COPY requirement_flask.txt requirement_flask.txt
-RUN pip3 install -r requirement_flask.txt
+# COPY requirement_flask.txt requirement_flask.txt
+# RUN pip3 install -r requirement_flask.txt
+RUN pip3 install flask \
+                 flask_cors \
+                 gunicorn
 
 COPY . .
 
