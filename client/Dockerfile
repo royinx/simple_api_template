@@ -4,4 +4,6 @@ RUN apt-get update && apt-get install -y libturbojpeg0 && \
     pip3 install PyTurboJPEG && \
     pip3 install requests line_profiler numpy
 
-CMD ["python3", "api_test.py"]
+WORKDIR /app
+COPY . .
+# ENTRYPOINT ["python3", "api_test.py"]
