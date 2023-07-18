@@ -94,7 +94,7 @@ jobs:
           context: .
           file: ./client/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:flask # ${{ steps.meta.outputs.tags }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:client # ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           # cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:buildcache_client
           # cache-to:   type=registry,ref=${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:buildcache_client,mode=max
