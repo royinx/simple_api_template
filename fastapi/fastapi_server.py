@@ -17,7 +17,7 @@ import uvicorn
 app = FastAPI()
 jpeg = TurboJPEG()
 
-@app.post("/test")
+@app.post("/test/")
 async def inference(req: Request):
     data = await req.body()
     img = jpeg.decode(data)
@@ -26,7 +26,7 @@ async def inference(req: Request):
     # print(img.shape)
     return JSONResponse(content=json.dumps({"shape": img.shape}))
 
-@app.get("/healthcheck")
+@app.get("/healthcheck/")
 async def check_health():
     return {"Status": 1}
 

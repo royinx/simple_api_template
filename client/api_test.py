@@ -12,7 +12,7 @@ class CFG(object):
         self.ip = f'http://{container_name}' # container_name : flask / fastapi
         self.port = port
         self.url = f'{self.ip}:{self.port}/test/'
-        self.test_url = f'{self.ip}:{self.port}/healthcheck'
+        self.test_url = f'{self.ip}:{self.port}/healthcheck/'
 
 if __name__ == '__main__':
     jpeg = TurboJPEG()
@@ -29,9 +29,9 @@ if __name__ == '__main__':
     def send(ip , port , img_enc):
         try:
             # response = requests.get(f"http://{ip}:{port}/healthcheck")
-            response = requests.post(f"http://{ip}:{port}/test",data=img_enc)
+            response = requests.post(f"http://{ip}:{port}/test/",data=img_enc)
             if response.status_code==200:
-                print(f"[Success] - http://{ip}:{port}/test \t status: {response.status_code} \t {response.json()}")
+                print(f"[Success] - http://{ip}:{port}/test/ \t status: {response.status_code} \t {response.json()}")
             else:
                 raise(response.status_code)
         except:

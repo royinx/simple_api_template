@@ -16,7 +16,7 @@ app = Flask(__name__)
 CORS(app,support_credentials=True)
 jpeg = TurboJPEG()
 
-@app.route('/test',methods=["POST"])
+@app.route('/test/',methods=["POST"])
 def test():
     data = request.data
     img = jpeg.decode(data)
@@ -26,7 +26,7 @@ def test():
     return jsonify(shape=img.shape)
 
 
-@app.route('/healthcheck',methods=["GET"])
+@app.route('/healthcheck/',methods=["GET"])
 def test_api():
     return jsonify(Status=1)
 
