@@ -6,4 +6,4 @@ RUN apt-get update && apt-get install -y libturbojpeg0 && \
 
 WORKDIR /app
 COPY . .
-# ENTRYPOINT ["python3", "api_test.py"]
+ENTRYPOINT ["python3", "api_test.py"]

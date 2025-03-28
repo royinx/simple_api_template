@@ -43,3 +43,5 @@ if __name__ == '__main__':
         time.sleep(1)
         send("flask", 9000, img_enc)
         time.sleep(1)
+        send("robyn", 9000, img_enc)
+        time.sleep(1)

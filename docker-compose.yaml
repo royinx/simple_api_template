@@ -4,7 +4,6 @@ services:
     fastapi:
         container_name: fastapi
         build: fastapi
-        # image: fastapi
         hostname: fastapi
         restart: always
         oom_kill_disable: true
@@ -25,7 +24,6 @@ services:
     flask:
         container_name: flask
         build: flask
-        # image: flask
         hostname: flask
         restart: always
         oom_kill_disable: true
@@ -42,10 +40,28 @@ services:
         networks:
             - back-tier
 
+    robyn:
+        container_name: robyn
+        build: robyn
+        hostname: robyn
+        restart: always
+        oom_kill_disable: true
+        privileged: true
+        tty: true
+        environment:
+            - API_PORT=9000
+        expose:
+            - "9000"
+
+        volumes:
+            - ./robyn:/py/
+        working_dir: /py
+        networks:
+            - back-tier
+
     client:
         container_name: client
         build: client
-        # image: client
         hostname: client
         restart: always
         oom_kill_disable: true
@@ -54,6 +70,7 @@ services:
         depends_on:
             - fastapi
             - flask
+            - robyn
         volumes:
             - ./client:/py/
         working_dir: /py
