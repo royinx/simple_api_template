@@ -71,11 +71,33 @@ services:
             - fastapi
             - flask
             - robyn
+            - rust_axum
         volumes:
             - ./client:/py/
         working_dir: /py
         networks:
             - back-tier
+        # entrypoint: ["bash", "-c", "sleep 1d"]
+
+    rust_axum:
+        container_name: rust_axum
+        build: rust_axum
+        hostname: rust_axum
+        restart: always
+        oom_kill_disable: true
+        privileged: true
+        tty: true
+        environment:
+            - API_PORT=9000
+        expose:
+            - "9000"
+
+        volumes:
+            - ./rust_axum:/py/
+        working_dir: /py
+        networks:
+            - back-tier
+
 
 networks:
     back-tier:

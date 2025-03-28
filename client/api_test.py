@@ -38,10 +38,13 @@ if __name__ == '__main__':
             raise("fail")
 
     import time
+    time.sleep(5)
     while 1:
         send("fastapi", 9000, img_enc)
         time.sleep(1)
         send("flask", 9000, img_enc)
         time.sleep(1)
         send("robyn", 9000, img_enc)
+        time.sleep(1)
+        send("rust_axum", 9000, img_enc)
         time.sleep(1)

@@ -7,8 +7,7 @@ RUN apt-get update \
 
 RUN pip3 install requests \
                  numpy \
-                 PyTurboJPEG \
-                 line_profiler
+                 PyTurboJPEG
 
 # COPY requirement_flask.txt requirement_flask.txt
 # RUN pip3 install -r requirement_flask.txt

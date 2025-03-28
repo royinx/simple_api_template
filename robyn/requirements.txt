@@ -2,4 +2,3 @@ robyn
 requests
 numpy
 PyTurboJPEG
-line_profiler

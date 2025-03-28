@@ -7,8 +7,7 @@ RUN apt-get update \
 
 RUN pip3 install requests \
                  numpy \
-                 PyTurboJPEG \
-                 line_profiler
+                 PyTurboJPEG
 
 # COPY requirement_fastapi.txt requirement_fastapi.txt
 # RUN pip3 install -r requirement_fastapi.txt
