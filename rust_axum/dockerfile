@@ -1,0 +1,11 @@
+FROM rust:1.85.1 as build-env
+WORKDIR /app
+COPY . /app
+RUN cargo build --release
+
+FROM gcr.io/distroless/cc:latest as runtime
+COPY --from=build-env /app/target/release/restapi /server
+CMD ["/server"]
+
+# Development
+# docker run --name rapi --rm -it --net simple_api_template_back-tier -v $PWD:/app -w /app -e API_PORT=9000 -p 9000 rust:1.85.1 bash
