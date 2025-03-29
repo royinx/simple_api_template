@@ -12,6 +12,3 @@ FROM scratch AS runtime
 COPY --from=build-env /app/target/aarch64-unknown-linux-musl/release/restapi /server
 EXPOSE 8080
 CMD ["/server"]
-
-# Development
-# docker run --name rapi --rm -it --net simple_api_template_back-tier -v $PWD:/app -w /app -e API_PORT=9000 -p 9000 rust:1.85.1 bash

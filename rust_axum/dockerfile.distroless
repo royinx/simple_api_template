@@ -1,0 +1,9 @@
+FROM rust:1.85.1 AS build-env
+WORKDIR /app
+COPY . /app
+RUN cargo build --release
+
+FROM gcr.io/distroless/cc:latest AS runtime
+COPY --from=build-env /app/target/release/restapi /server
+EXPOSE 8080
+CMD ["/server"]
